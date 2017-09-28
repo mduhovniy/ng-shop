@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {MATERIAL_COMPATIBILITY_MODE} from "@angular/material";
+import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import {MATERIAL_COMPATIBILITY_MODE} from "@angular/material";
     BrowserModule,
     MatToolbarModule
   ],
-  providers: [{provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}],
+  providers: [ { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
