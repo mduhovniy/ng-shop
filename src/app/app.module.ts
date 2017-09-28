@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material/core';
 import {ProductService} from './shared/services';
 import {HttpClientModule} from '@angular/common/http';
-import { HomeComponent } from './home';
+import { HomeComponent, ProductTileComponent } from './home';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ProductTileComponent
   ],
   imports: [
     BrowserModule,
