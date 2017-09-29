@@ -5,7 +5,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material/core';
-import { ProductService } from './shared/services';
+import { ProductService, ShoppingCartService } from './shared/services';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent, ProductTileComponent } from './home';
 import { RouterModule } from '@angular/router';
@@ -19,6 +19,10 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { ErrorComponent } from './error/error.component';
+import { CartComponent } from './cart/cart.component';
+import {CartResolver} from "./cart/cart-resolver";
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     ProductTileComponent,
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ErrorComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule
   ],
   providers: [{ provide: MATERIAL_COMPATIBILITY_MODE, useValue: true },
-              ProductService],
+              ProductService, ShoppingCartService, CartResolver ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
