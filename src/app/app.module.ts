@@ -8,18 +8,23 @@ import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material/core';
 import {ProductService} from './shared/services';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent, ProductTileComponent } from './home';
+import { ProductComponent } from './product';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductTileComponent
+    ProductTileComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true},
     ProductService],
