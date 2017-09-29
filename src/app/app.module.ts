@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent,  ProductDetailsComponent } from './product';
@@ -45,7 +46,8 @@ import {CartResolver} from "./cart/cart-resolver";
     FormsModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule
   ],
   providers: [{ provide: MATERIAL_COMPATIBILITY_MODE, useValue: true },
               ProductService, ShoppingCartService, CartResolver ],

@@ -15,8 +15,6 @@ export const routes: Route[] = [
     ]
   },
   { path: 'products/:productId', component: ProductComponent },
-  { path: 'cart', component: CartComponent,
-    resolve: { products: CartResolver}
-  },
+  { path: 'cart', component: CartComponent, resolve: { products: CartResolver}},
   { path: '**', component: ErrorComponent}
 ];
