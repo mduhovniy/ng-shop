@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ErrorComponent } from './error/error.component';
 import { CartComponent } from './cart/cart.component';
 import {CartResolver} from "./cart/cart-resolver";
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {CartResolver} from "./cart/cart-resolver";
     ProductComponent,
     ProductDetailsComponent,
     ErrorComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
