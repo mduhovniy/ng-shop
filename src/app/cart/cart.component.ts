@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ShoppingCartService, ShoppingCartState } from '../shared/services';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'ngs-cart',
@@ -10,11 +12,26 @@ import { Product, ShoppingCartService, ShoppingCartState } from '../shared/servi
 export class CartComponent {
 
   products: Product[];         // products are populated by the resolver
-  quantity: ShoppingCartState; // quantity per product
+  formModel: FormGroup;
 
   constructor(private cart: ShoppingCartService, route: ActivatedRoute) {
     this.products = route.snapshot.data['products'];
-    this.quantity = this.cart.getItems();
+    const cartItems = this.cart.getItems();
+
+    const controls = this.products.reduce((accumulator, product) => {
+      const control = new FormControl(cartItems[product.id], positive);
+      return Object.assign(accumulator, { [product.id]: control });
+    }, {});
+
+    this.formModel = new FormGroup(controls);
+    this.formModel.valueChanges
+      .debounceTime(200)
+      .subscribe(value => {
+        if (this.formModel.valid) {
+          this.cart.setItems(value);
+        }
+      });
+
   }
 
   get total() {
@@ -30,5 +47,11 @@ export class CartComponent {
     const index = this.products.findIndex(p => p.id === productId);
     this.products.splice(index, 1);
     this.cart.removeItem(productId);
+    this.formModel.removeControl(productId);
   }
+}
+
+function positive(control: AbstractControl): {[key: string]: boolean} {
+  const valid = Number.isInteger(control.value) && control.value > 0;
+  return valid ? null : { positive: true };
 }

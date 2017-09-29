@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material/core';
@@ -16,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent,  ProductDetailsComponent } from './product';
-import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
@@ -47,7 +47,8 @@ import {CartResolver} from "./cart/cart-resolver";
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: MATERIAL_COMPATIBILITY_MODE, useValue: true },
               ProductService, ShoppingCartService, CartResolver ],
