@@ -9,8 +9,16 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Product[]> {
-    return this.http
-      .get<Product[]>('/data/products/all.json');
+    return this.http.get<Product[]>('/data/products/all.json');
+  }
+
+  getCategory(category: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`/data/products/${category}.json`);
+  }
+
+  getProductById(productId: string): Observable<Product> {
+    return this.http.get<Product[]>('/data/products/all.json')
+      .map(products => products.find(p => p.id === productId));
   }
 }
 
